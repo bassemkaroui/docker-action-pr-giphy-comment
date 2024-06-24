@@ -1,4 +1,4 @@
-name: 'Giphy PR Comment'
+name: 'Giphy Thank You PR Comment 🎉'
 description: 'Add a Giphy GIF comment to new pull requests.'
 inputs:
   github-token:
@@ -14,6 +14,7 @@ inputs:
 outputs:
   pr-comment-url:
     description: 'URL of the comment added to the pull request.'
+    
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -21,3 +22,7 @@ runs:
     - ${{ inputs.github-token }}
     - ${{ inputs.giphy-api-key }}
     - ${{ inputs.message }}
+
+branding:
+  icon: 'award'
+  color: 'green'
