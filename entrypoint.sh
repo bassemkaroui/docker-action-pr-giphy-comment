@@ -3,6 +3,7 @@
 # Get the GitHub Token and Giphy API Key from GitHub Action inputs
 GITHUB_TOKEN=$1
 GIPHY_API_KEY=$2
+MESSAGE=$3
 
 # Get the pull request number from the GitHub event payload
 pull_request_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
@@ -19,7 +20,7 @@ echo GIPHY_URL - $gif_url
 # Create a comment with the GIF on the pull request
 comment_response=$(curl -sX POST -H "Authorization: token $GITHUB_TOKEN" \
   -H "Accept: application/vnd.github.v3+json" \
-  -d "{\"body\": \"### PR - #$pull_request_number. \n ### 🎉 Thank you for this contribution! \n  ![GIF]($gif_url) \"}" \
+  -d "{\"body\": \"### PR - #$pull_request_number. \n ### $MESSAGE \n  ![GIF]($gif_url) \"}" \
   "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$pull_request_number/comments")
 
 # Extract and print the comment URL from the comment response
