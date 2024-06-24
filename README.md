@@ -43,3 +43,7 @@ jobs:
 - `github-token`: **Required**. The GitHub token to authorize the action.
 - `giphy-api-key`: **Required**. The Giphy API key to fetch a thank you GIF.
 - `message`: The custom message to include in the comment. Default is '🎉 Thank you for your contribution!'.
+
+### Outputs
+
+- `pr-comment-url`: The URL of the posted comment.
